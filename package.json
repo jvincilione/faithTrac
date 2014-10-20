@@ -1,16 +1,18 @@
 {
-      "name": "FaithTrac",
-      "main": "server.js",
+      "name" : "FaithTrac",
+      "description" : "Easily deployable Church Ministry Attendance Tracker.",
+      "author" : "Jacques Vincilione <jvincilione@gmail.com>",
+      "main" : "server.js",
       "repository" : {
       	"type" : "git",
- 	"url" : "https://github.com/jvincilione3/faithTrac.git"
+ 	      "url" : "https://github.com/jvincilione3/faithTrac.git"
       },
-      "dependencies": {
+      "dependencies" : {
         "express" : "~4.5.1",
         "mongoose" : "~3.8.0",
         "body-parser" : "~1.4.2",
         "method-override" : "~2.0.2",
-        "mongodb": "~2.0"
+        "mongodb" : "*"
       }
     }
 

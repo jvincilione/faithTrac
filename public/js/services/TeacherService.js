@@ -2,17 +2,25 @@ angular.module('TeacherService', []).factory('Teacher', ['$http', function($http
 
     return {
         // call to get all teachers
-        get : function() {
-            return $http.get('/api/teachers');
+        getAllTeachers : function() {
+            return $http.get('/api/teachers/getAllTeachers')
+            .error(function(data, status, headers, config) {
+                console.log('error');
+            });
+        },
+
+        // call to get specific teacher
+        getTeacher : function(id) {
+            return $http.get('/api/teachers/' + id);
         },
 
         //create a teacher
-        create : function(teacherData) {
+        createTeacher : function(teacherData) {
             return $http.post('/api/teachers', teacherData);
         },
 
         // call to DELETE a teacher
-        delete : function(id) {
+        deleteTeacher : function(id) {
             return $http.delete('/api/teachers/' + id);
         }
     }       

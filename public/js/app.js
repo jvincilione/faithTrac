@@ -1,8 +1,5 @@
-(function() {
-    var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService']);
+angular.module('faithTrac', ['ngRoute', 'TeacherService', 'MainCtrl', 'TeacherCtrl', 'appRoutes']);
 
-    return app;
-})();
 
 // (function() {
 //     var app = angular.module('church', []);

@@ -8,10 +8,30 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'MainController'
         })
 
-        // nerds page that will use the TeacherController
+        // teachers page that will use the TeacherController
         .when('/teachers', {
             templateUrl: 'views/teachers.html',
             controller: 'TeacherController'
+        })
+
+        .when('/classes', {
+            templateUrl: 'views/classes.html',
+            controller: 'ClassController'
+        })
+
+        .when('/busses', {
+            templateUrl: 'views/busses.html',
+            controller: 'BussController'
+        })
+
+        .when('/master-clubs', {
+            templateUrl: 'views/master-clubs.html',
+            controller: 'MasterClubController'
+        })
+
+        .when('/members', {
+            templateUrl: 'views/members.html',
+            controller: 'MemberController'
         });
 
     $locationProvider.html5Mode(true);
