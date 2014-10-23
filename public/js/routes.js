@@ -8,28 +8,37 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'MainController'
         })
 
-        // teachers page that will use the TeacherController
-        .when('/teachers', {
+        // teachers 
+        // TeacherController
+        // ================================
+        .when('/teachers/', {
             templateUrl: 'views/teachers.html',
             controller: 'TeacherController'
         })
+        .when('/teachers/id=:id', {
+            templateUrl: 'views/teacher.html',
+            controller: 'TeacherController'
+        })
 
-        .when('/classes', {
+        // classes 
+        // ClassController
+        // ================================
+        .when('/classes/', {
             templateUrl: 'views/classes.html',
             controller: 'ClassController'
         })
 
-        .when('/busses', {
+        .when('/busses/', {
             templateUrl: 'views/busses.html',
             controller: 'BussController'
         })
 
-        .when('/master-clubs', {
+        .when('/master-clubs/', {
             templateUrl: 'views/master-clubs.html',
             controller: 'MasterClubController'
         })
 
-        .when('/members', {
+        .when('/members/', {
             templateUrl: 'views/members.html',
             controller: 'MemberController'
         });

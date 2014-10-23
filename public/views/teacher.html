@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>{{teacher.name_last + ", " + teacher.name_first}} <small></small></h1>
+</div>
+<div ng-controller="ClassController">
+    <div ng-repeat="class in allClasses">
+        <div class="panel panel-default" ng-show="{{teacher.class_id}} === {{class._id}}">
+            <div class="panel-heading">
+                <h2 class="panel-title">{{class.name}} Class <small>Members</small></h2>
+            </div>
+            <div class="panel-body" ng-controller="MemberController">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="member in members" ng-show="{{member.class_id}} === {{class._id}}">
+                            <td>{{member.name_first}}</td>
+                            <td>{{member.name_last}}</td>
+                            <td>{{member.phone}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

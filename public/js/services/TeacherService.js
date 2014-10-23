@@ -11,7 +11,7 @@ angular.module('TeacherService', []).factory('Teacher', ['$http', function($http
 
         // call to get specific teacher
         getTeacher : function(id) {
-            return $http.get('/api/teachers/' + id);
+            return $http.get('/api/teachers/id=' + id);
         },
 
         //create a teacher

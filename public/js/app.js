@@ -1,4 +1,16 @@
-angular.module('faithTrac', ['ngRoute', 'TeacherService', 'MainCtrl', 'TeacherCtrl', 'appRoutes']);
+angular.module(
+    'faithTrac', [
+        'ngRoute', 
+        'TeacherService', 
+        'ClassService', 
+        'MemberService', 
+        'MainCtrl', 
+        'TeacherCtrl', 
+        'ClassCtrl',
+        'MemberCtrl', 
+        'appRoutes'
+    ]
+);
 
 
 // (function() {

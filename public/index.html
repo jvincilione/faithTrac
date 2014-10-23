@@ -8,15 +8,18 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+    <link rel="stylesheet" href="style.css"> <!-- custom styles -->
 </head>
 <body ng-controller="TeacherController">
 <nav class="navbar navbar-default navbar-static-top">
     <div class="navbar-header col-sm-12 col-md-2">
         <a class="navbar-brand" href="/">FaithTracker</a>
     </div>
-    <ul class="nav navbar-nav pull-right col-sm-12 col-md-10">
-        <li><a href="/new-teacher">New Teacher</a></li>
+    <ul class="nav navbar-nav navbar-right col-sm-12 col-md-4">
+        <li><a href="/classes/new/">New Class</a></li>
+        <li><a href="/busses/new/">New Bus</a></li>
+        <li><a href="/teachers/new/">New Teacher</a></li>
+        <li><a href="/members/new/">New Member</a></li>
     </ul>
 </nav>
 <div class="container">
@@ -24,13 +27,13 @@
     <div class="span2 col-sm-12 col-md-2">
         <div class="nav-collapse sidebar-nav">
             <ul class="nav nav-tabs nav-stacked main-menu">
-                <li><a href="/"><i class="glyphicon glyphicon-dashboard"></i><span class=""> Dashboard</span></a></li>   
-                <li><a href="/teachers"><i class="glyphicon glyphicon-user"></i><span class=""> Teachers</span></a></li>
-                <li><a href="/classes"><i class="glyphicon glyphicon-th-large"></i><span class=""> Classes</span></a></li>
-                <li><a href="/busses"><i class="glyphicon glyphicon-road"></i><span class=""> Busses</span></a></li>
-                <li><a href="/master-clubs"><i class="glyphicon glyphicon-book"></i><span class=""> Master Clubs</span></a></li>
-                <li><a href="/students"><i class="glyphicon glyphicon-user"></i><span class=""> Members</span></a></li>
-                <li><a href="login.html"><i class="glyphicon glyphicon-lock"></i><span class=""> Login Page</span></a></li>
+                <li><a href="/"><i class="glyphicon glyphicon-dashboard"></i><span class=""> Dashboard</span></a></li> 
+                <li><a href="/classes/"><i class="glyphicon glyphicon-th-large"></i><span class=""> Classes</span></a></li>  
+                <li><a href="/teachers/"><i class="glyphicon glyphicon-user"></i><span class=""> Teachers</span></a></li>
+                <li><a href="/students/"><i class="glyphicon glyphicon-user"></i><span class=""> Members</span></a></li>
+                <li><a href="/busses/"><i class="glyphicon glyphicon-road"></i><span class=""> Busses</span></a></li>
+                <li><a href="/master-clubs/"><i class="glyphicon glyphicon-book"></i><span class=""> Master Clubs</span></a></li>
+                <li><a href="login.html/"><i class="glyphicon glyphicon-lock"></i><span class=""> Login Page</span></a></li>
             </ul>
         </div>
     </div>
@@ -48,6 +51,10 @@
 <script src="js/controllers/MainCtrl.js"></script>
 <script src="js/controllers/TeacherCtrl.js"></script>
 <script src="js/services/TeacherService.js"></script>
+<script src="js/controllers/ClassCtrl.js"></script>
+<script src="js/services/ClassService.js"></script>
+<script src="js/controllers/MemberCtrl.js"></script>
+<script src="js/services/MemberService.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
