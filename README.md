@@ -1,4 +1,4 @@
-faithTrac
+FaithTrac
 =========
 
 Church Ministry Attendance Tracker
