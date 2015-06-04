@@ -13,6 +13,6 @@ Before using, please install the following:
 Intallation Steps:
 
 1. Create application directory.
-2. Clone this repository (https://github.com/jvincilione3/faithTrac.git).
+2. Clone this repository (https://github.com/jvincilione/faithTrac.git).
 3. Navigate to application directory in CLI.
 4. Run "npm install" and "bower install".
