@@ -1,17 +1,16 @@
-angular.module('ClassService', []).factory('Class', ['$http', function($http) {
+angular.module('AttendeeService', []).factory('Attendee', ['$http', function($http) {
 
     return {
         // call to get all teachers
-        getClasses : function(type) {
-            return $http.get('/api/classes/type=' + encodeURIComponent(type))
+        getAttendee : function(type) {
+            return $http.get('/api/classes/?type=' + encodeURIComponent(type))
             .error(function(data, status, headers, config) {
-                console.log('error');
             });
         },
 
         // call to get specific class
-        getClass : function(id) {
-            return $http.get('/api/classes/id=' + id);
+        addAttendaceRecord : function(postData) {
+            return $http.post('/api/classes/create/', postData);
         },
 
         //create a class
@@ -21,7 +20,7 @@ angular.module('ClassService', []).factory('Class', ['$http', function($http) {
 
         // call to DELETE a class
         deleteClass : function(id) {
-            return $http.delete('/api/classes/' + id);
+            return $http.delete('/api/classes/?id=' + id);
         }
     }       
 

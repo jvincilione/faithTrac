@@ -1,3 +1,5 @@
+"use strict";
+var db = require("../app/config");
 module.exports = {
-    url : 'mongodb://localhost/FaithTracker'
-}
+    url : db.dbName
+};

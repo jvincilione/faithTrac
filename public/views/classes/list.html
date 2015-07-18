@@ -1,0 +1,6 @@
+<div class="page-header">
+  <h1>Classes <small>Select a class to edit.</small></h1>
+</div>
+<ul>
+    <li ng-repeat="class in allClasses">{{ class.name }} <a href="/classes/id={{class._id}}"><span class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a></li>
+</ul>
