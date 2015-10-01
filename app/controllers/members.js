@@ -1,3 +1,4 @@
+/* globals require, exports */
 'use strict';
 
 var db = require('../config');
@@ -10,7 +11,10 @@ exports.allMembers = function(req, res) {
     // set collections to classes
     // query database to get all classes
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
 
         var collection = db.collection('members');
         collection.find().toArray(function(err, results) {
@@ -18,26 +22,30 @@ exports.allMembers = function(req, res) {
             db.close();
         });
     });
-}
+};
 
 exports.memberById = function(req, res) {
     // splid url on '=' to get type
     // then create mongo instance
     // include format utility
-        MongoClient = require('mongodb').MongoClient;
+    var MongoClient = require('mongodb').MongoClient,
+        id = req.query.id;
 
     // connect to mongo database, show errors if any
     // set collections to teachers
     // query database using ID set above
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('members');
-        collection.find({_id : parseInt(id)}).toArray(function(err, results) {
+        collection.find({_id : id}).toArray(function(err, results) {
             res.send(results);
             db.close();
         });
     });
-}
+};
 
 exports.updateMember = function(req, res) {
     // then create mongo instance
@@ -48,10 +56,13 @@ exports.updateMember = function(req, res) {
     // set collections to classes
     // add new class
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('members');
         if (data.id) {
-            collection.find({_id : id}).toArray(function(err, results) {
+            collection.find({_id : data.id}).toArray(function(err, results) {
                 var insertData = {
                     name_first : data.first || results.name_first,
                     name_last : data.last || results.name_last,
@@ -92,7 +103,7 @@ exports.updateMember = function(req, res) {
                         mc_collection.insert({
                             class_id : data.classId,
                             member_id : data.studentId
-                        })
+                        });
                     } else {    
                         res.send(results);
                         db.close();   
@@ -100,4 +111,4 @@ exports.updateMember = function(req, res) {
             });
         }
     });
-}
+};

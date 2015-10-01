@@ -7,8 +7,7 @@
     <title>FaithTracker</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- custom styles -->
+    <link rel="stylesheet" href="styles.min.css"> <!-- custom styles -->
 </head>
 <body ng-controller="MainController">
 <nav class="navbar navbar-default navbar-static-top">
@@ -27,11 +26,18 @@
             <li ng-repeat="item in nav" ng-show="item.show">
                 <a href="{{item.url}}"><i class="glyphicon glyphicon-{{item.icon}}"></i><span class=""> {{item.title}}</span></a>
             </li>
-            <li><a href="login.html/"><i class="glyphicon glyphicon-lock"></i><span class=""> Login Page</span></a></li>    
+            <li ng-show="!user"><a href="login/"><i class="glyphicon glyphicon-lock"></i><span class=""> Login</span></a></li>   
+            <li class="dropdown" ng-show="user">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="">{{user.name_first}} </span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile/">Profile</a></li>
+                <li><a href="logout/">Logout</a></li>
+              </ul>
+            </li>
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
     <!-- HEADER -->
     <div class="span2 col-sm-12 col-md-2">
         <div class="nav-collapse sidebar-nav">
@@ -50,18 +56,26 @@
 <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/angular/angular.min.js"></script>
 <script src="libs/angular-route/angular-route.min.js"></script>
+<script src="libs/angular-cookies/angular-cookies.min.js"></script>
 
 <!-- ANGULAR CUSTOM -->
 <script src="js/routes.js"></script>
-<script src="js/controllers/NavigationCtrl.js"></script>
-<script src="js/controllers/MainCtrl.js"></script>
-<script src="js/controllers/TeacherCtrl.js"></script>
-<script src="js/services/TeacherService.js"></script>
-<script src="js/controllers/ClassCtrl.js"></script>
+
+<script src="js/controllers/MainController.js"></script>
+<script src="js/controllers/NavigationController.js"></script>
+<script src="js/controllers/UserController.js"></script>
+<script src="js/controllers/ClassController.js"></script>
+<script src="js/controllers/MemberController.js"></script>
+
 <script src="js/services/ClassService.js"></script>
-<script src="js/controllers/MemberCtrl.js"></script>
 <script src="js/services/MemberService.js"></script>
+<script src="js/services/InfoService.js"></script>
+<script src="js/services/UserService.js"></script>
+<script src="js/services/AttendeeService.js"></script>
+
 <script src="js/app.js"></script>
+
+<!-- <script src="script.min.js"></script> -->
 </body>
 </html>
 

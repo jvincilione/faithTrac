@@ -1,3 +1,4 @@
+/* globals require, exports */
 "use strict";
 var db = require("../config");
 
@@ -9,7 +10,10 @@ exports.getInfo = function(req, res) {
     // set collections to info
     // query database to get app info
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
 
         var collection = db.collection("info");
         collection.find().toArray(function(err, results) {
@@ -28,7 +32,10 @@ exports.updateInfo = function(req, res) {
     // set collections to info
     // add/update info
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection("info");
 
         // if we passed an id, get that users info
@@ -67,7 +74,10 @@ exports.logError = function(req, res) {
     // set collections to errorLog
     // add error to log
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection("errorLog");
 
         collection.insert({

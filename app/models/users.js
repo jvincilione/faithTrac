@@ -7,6 +7,7 @@ var userSchema = new Schema({
     name_last : {type : String, default: ""},
     email : {type : String, default: ""},
     password : {type : String, default: ""},
+    salt : {type : String, default: ""},
     role : {type : Number, default: "3"}, // 1 = superuser, 2 = admin, 3 = teacher
     class_id : [], // this is for teachers only - teacher user type can be in multiple classes
     member_class_id : {type : Number}, // a teacher/user can also be a member

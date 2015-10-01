@@ -1,3 +1,4 @@
+/* globals require, exports */
 'use strict';
 
 var db = require('../config');
@@ -10,7 +11,10 @@ exports.allClasses = function(req, res) {
     //set collections to classes
     //query database to get all classes
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
 
         var collection = db.collection('classes');
         collection.find().toArray(function(err, results) {
@@ -31,7 +35,10 @@ exports.classByType = function(req, res) {
     //set collections to teachers
     //query database using ID set above
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('classes');
         collection.find({type : type}).toArray(function(err, results) {
             res.send(results);
@@ -49,7 +56,10 @@ exports.classById = function(req, res) {
     //set collections to teachers
     //query database using ID set above
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('classes');
         collection.find({_id : parseInt(id)}).toArray(function(err, results) {
             res.send(results);
@@ -67,7 +77,10 @@ exports.updateClass = function(req, res) {
     //set collections to classes
     //add new class
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('classes');
         if (data.id) {
             collection.find({_id : parseInt(data.id)}).toArray(function(err, results) {
@@ -101,7 +114,10 @@ exports.getMembersByClass = function(req, res) {
     //set collections to teachers
     //query database using ID set above
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('member-classes');
         collection.find({
                 class_id : parseInt(id)
@@ -109,23 +125,25 @@ exports.getMembersByClass = function(req, res) {
                 var returnVal = [],
                     i = 0,
                     length = results.length,
-                    collection = db.collection('members');
+                    collection = db.collection('members'),
+                    memberCallback = function(err, result) {
+                        returnVal.push(result);
+                    };
 
                 // set return val to all the members of that class   
                 for (i; i < length; i++) {
-                    collection.find({member_class_id : parseInt(results[i]._id)}).toArray(function(err, result) {
-                        returnVal.push(result);
-                    });
+                    collection.find({member_class_id : parseInt(results[i]._id)}).toArray(memberCallback);
                 }
-                var n = 0;
-                collection = db.collection('users');
-                // set return val to all the members of that class   
-                for (n; n < length; n++) {
-                    collection.find({member_class_id : parseInt(results[n]._id)}).toArray(function(err, result) {
+                var n = 0,
+                    userCallback = function(err, result) {
                         if (result.length > 1) {
                             returnVal.push(result);
                         }
-                    });
+                    };
+                collection = db.collection('users');
+                // set return val to all the members of that class   
+                for (n; n < length; n++) {
+                    collection.find({member_class_id : parseInt(results[n]._id)}).toArray(userCallback);
                 }
                 res.send(returnVal);
                 db.close();

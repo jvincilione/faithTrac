@@ -1,0 +1,15 @@
+public/libs/angular*
+public/libs/animate.css/
+public/libs/jquery/
+public/libs/font-awesome/
+public/libs/bootstrap/dist/
+public/libs/bootstrap/fonts/
+public/libs/bootstrap/grunt/
+public/libs/bootstrap/bower.json
+public/libs/bootstrap/.bower.json
+public/libs/bootstrap/Gruntfile.js
+public/libs/bootstrap/LICENSE
+public/libs/bootstrap/package.json
+public/libs/bootstrap/README.md
+test/
+node_modules/

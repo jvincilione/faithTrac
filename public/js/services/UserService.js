@@ -7,10 +7,10 @@ angular.module("UserService", []).factory("User", ["$http", function($http) {
         },
         // call to get specific user
         getUser : function(id) {
-            return $http.get("/api/users/?id=" + id);
+            return $http.get("/api/users/?id=" + encodeURIComponent(id));
         },
 
-        //create a user
+        //create a user... also used to update the user
         createUser : function(data) {
             return $http.post("/api/users/update/", data);
         },

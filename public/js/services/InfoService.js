@@ -9,6 +9,11 @@ angular.module("InfoService", []).factory("Info", ["$http", function($http) {
         update : function(data) {
             return $http.post("/api/appInfo/update/", data);
         },
+        
+        //login
+        loginUser : function(data) {
+            return $http.post("/api/users/login/", data);
+        },
 
         logError: function(error) {
             // log error to console - dev

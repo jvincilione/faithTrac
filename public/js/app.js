@@ -1,20 +1,21 @@
+""
 angular.module(
-    'faithTrac', [
-        'ngRoute', 
+    "faithTrac", [
+        "ngRoute", 
+        "ngCookies",
         // services
-        'TeacherService', 
-        'ClassService', 
-        'MemberService', 
-        'UserService',
-        'AttendeeService',
-        'InfoService',
+        "ClassService", 
+        "MemberService", 
+        "UserService",
+        "AttendeeService",
+        "InfoService",
         // controllers
-        'MainCtrl', 
-        'TeacherCtrl', 
-        'ClassCtrl',
-        'MemberCtrl', 
-        'NavigationCtrl', 
+        "MainCtrl",  
+        "ClassCtrl",
+        "MemberCtrl", 
+        "NavigationCtrl",
+        "UserCtrl", 
         // routes
-        'appRoutes'
+        "appRoutes"
     ]
 );

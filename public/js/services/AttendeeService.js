@@ -3,9 +3,7 @@ angular.module('AttendeeService', []).factory('Attendee', ['$http', function($ht
     return {
         // call to get all teachers
         getAttendee : function(type) {
-            return $http.get('/api/classes/?type=' + encodeURIComponent(type))
-            .error(function(data, status, headers, config) {
-            });
+            return $http.get('/api/classes/?type=' + encodeURIComponent(type));
         },
 
         // call to get specific class

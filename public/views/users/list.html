@@ -1,0 +1,6 @@
+<div class="page-header">
+  <h1>Users <small>Select a person to edit.</small></h1>
+</div>
+<ul>
+    <li ng-repeat="person in users"><a href="users/{{person._id}}/">{{ person.name_last + ", " + person.name_first }}</a></li>
+</ul>

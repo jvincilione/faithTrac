@@ -1,3 +1,4 @@
+/* globals require, exports */
 'use strict';
 
 var db = require('../config');
@@ -10,7 +11,10 @@ exports.newRecord = function(req, res) {
     //set collections to classes
     //add new class
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('attendance');
         collection.insert({
                 date : data.date,
@@ -32,7 +36,10 @@ exports.getAttendeeReport = function(req, res) {
     //set collections to teachers
     //query database using ID set above
     MongoClient.connect(db.dbName, function (err, db) {
-        if(err) throw err;
+        if (err) {
+            res.send(err);
+            db.close();
+        }
         var collection = db.collection('classes');
         collection.find({member_id : parseInt(memberId)}).toArray(function(err, results) {
             res.send(results);

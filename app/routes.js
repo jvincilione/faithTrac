@@ -1,3 +1,4 @@
+/* globals require, module */
 "use strict";
 var classes = require("./controllers/classes.js"),
     users = require("./controllers/users.js"),
@@ -26,11 +27,11 @@ module.exports = function(app) {
             users.updateUser(req, res);
         });
 
-        app.get("/api/users/?id*", function(req, res) {
+        app.get("/api/users/", function(req, res) {
             users.userById(req, res);
         });
 
-        app.get("/api/users/?role*", function(req, res) {
+        app.get("/api/users/role/", function(req, res) {
             users.userByType(req, res);
         });
 
@@ -38,8 +39,12 @@ module.exports = function(app) {
             users.allUsers(req, res);
         });
 
-        app.delete("/api/users/?id*", function(req, res) {
-            users.allUsers(req, res);
+        app.delete("/api/users/", function(req, res) {
+            // users.delUser(req, res);
+        });
+
+        app.post("/api/users/login/", function(req, res) {
+            users.loginUser(req, res);
         });
     
     // class routes ==========================================================
@@ -77,17 +82,19 @@ module.exports = function(app) {
         });
 
     // attendance routes =====================================================
-
+        app.get("/api/attendance/attendeeReport", function(req, res) {
+            attendance.getAttendeeReport(req, res);
+        }); 
 
 
     // frontend routes =======================================================
     
-        //for js files, route goes to that file
+        // for js files, route goes to that file
         app.get("*.js", function(req, res) {
             res.sendfile("./public" + req.url); 
         });
 
-        //for css files, route goes to that file
+        //f or css files, route goes to that file
         app.get("*.css", function(req, res) {
             res.sendfile("./public" + req.url); 
         });
