@@ -11,37 +11,34 @@
 </head>
 <body ng-controller="MainController">
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="navbar-header">
+    <div class="navbar-header col-xs-6">
         <a class="navbar-brand" href="/">FaithTracker</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
     </div>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="nav navbar-nav navbar-right" ng-controller="NavigationController">
-            <li><a href="/"><i class="glyphicon glyphicon-dashboard"></i><span class=""> Dashboard</span></a></li> 
-            <li ng-repeat="item in nav" ng-show="item.show">
-                <a href="{{item.url}}"><i class="glyphicon glyphicon-{{item.icon}}"></i><span class=""> {{item.title}}</span></a>
-            </li>
-            <li ng-show="!user"><a href="login/"><i class="glyphicon glyphicon-lock"></i><span class=""> Login</span></a></li>   
-            <li class="dropdown" ng-show="user">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="">{{user.name_first}} </span><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="profile/">Profile</a></li>
-                <li><a href="logout/">Logout</a></li>
-              </ul>
-            </li>
+    <div>
+        <ul class="nav navbar-nav navbar-right  col-xs-6 col-md-4 col-lg-2" ng-controller="NavigationController">
+            <li ng-show="!info.user"><a href="login/"><i class="glyphicon glyphicon-lock"></i><span class=""> Login</span></a></li>   
+            <li ng-show="info.user" class="col-xs-6 col-md-6"><a href="profile/">{{info.user.name_first}}</a></li>
+            <li ng-show="info.user" class="col-xs-6 col-md-6"><a href="logout/">Logout</a></li>
         </ul>
     </div>
 </nav>
 <div class="container-fluid">
     <!-- HEADER -->
-    <div class="span2 col-sm-12 col-md-2">
-        <div class="nav-collapse sidebar-nav">
-            <ul class="nav nav-tabs nav-stacked main-menu" ng-controller="NavigationController">
+    <div class="span2 col-sm-12 col-md-2 navbar-nav navbar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="nav-collapse sidebar-nav collapse navbar-collapse" id="navbarCollapse">
+            <ul class="nav nav-stacked main-menu" ng-controller="NavigationController">
+                <li><a href="/"><i class="glyphicon glyphicon-dashboard"></i><span class=""> Dashboard</span></a></li> 
+                <li ng-repeat="item in nav" ng-show="item.show">
+                    <a href="{{item.url}}"><i class="glyphicon glyphicon-{{item.icon}}"></i><span class=""> {{item.title}}</span></a>
+                </li>
             </ul>
         </div>
     </div>

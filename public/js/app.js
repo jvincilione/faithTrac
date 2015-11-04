@@ -1,21 +1,21 @@
-""
+'use strict';
 angular.module(
-    "faithTrac", [
-        "ngRoute", 
-        "ngCookies",
+    'faithTrac', [
+        'ngRoute',
+        'ngCookies',
         // services
-        "ClassService", 
-        "MemberService", 
-        "UserService",
-        "AttendeeService",
-        "InfoService",
+        'ClassService',
+        'MemberService',
+        'UserService',
+        'AttendeeService',
+        'InfoService',
         // controllers
-        "MainCtrl",  
-        "ClassCtrl",
-        "MemberCtrl", 
-        "NavigationCtrl",
-        "UserCtrl", 
+        'MainCtrl',
+        'ClassCtrl',
+        'MemberCtrl',
+        'NavigationCtrl',
+        'UserCtrl',
         // routes
-        "appRoutes"
+        'appRoutes'
     ]
 );

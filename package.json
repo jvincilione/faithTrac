@@ -7,17 +7,18 @@
     "type": "git",
     "url": "https://github.com/jvincilione/faithTrac.git"
   },
-  "dependencies": {
-    "body-parser": "~1.4.2",
-    "csprng": "^0.1.1",
-    "express": "~4.5.1",
+  "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "*",
     "grunt-contrib-less": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
+    "grunt-contrib-watch": "*"
+  },
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "csprng": "^0.1.1",
+    "express": "~4.5.1",
     "method-override": "~2.0.2",
-    "mongodb": "*",
-    "mongoose": "~3.8.0"
+    "mysql": "^2.9.0"
   }
 }

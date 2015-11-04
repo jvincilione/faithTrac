@@ -1,20 +1,18 @@
 /* globals angular */
-angular.module('MainCtrl', [])
-    .controller('MainController', ['$scope', 'Info', '$cookies', '$timeout', 'User',
-        function($scope, Info, $cookies, $timeout, User) {
+angular.module('HeaderCtrl', [])
+    .controller('HeaderController', ['$scope', 'Info', '$cookies',
+        function($scope, Info, $cookies) {
             'use strict';
             $scope.tagline = undefined;
             $scope.churchName = 'King\'s Way';//undefined;
             $scope.loggedInUser = $cookies.get('FaithTracUserId') || null;
             $scope.login = {};
             $scope.errorMessage = false;
-            $scope.user = Info.getUser();
 
             var init = function() {
                 if ($scope.loggedInUser && !$scope.user) {
                     User.getUser($scope.loggedInUser)
                         .success(function(response) {
-                            Info.setUser(response);
                             $scope.user = response;
                         });
                 }
@@ -38,7 +36,6 @@ angular.module('MainCtrl', [])
                     .success(function(response) {
                         if (response.success === true) {
                             $cookies.put('FaithTracUserId', response.user.id);
-                            Info.setUser(response.user);
                             $scope.user = response.user;
                         } else {
                             $scope.errorMessage = response.message;
@@ -53,7 +50,6 @@ angular.module('MainCtrl', [])
 
             var logout = function() {
                 $cookies.remove('FaithTracUserId');
-                Info.setUser(null);
                 $scope.user = null;
             };
 

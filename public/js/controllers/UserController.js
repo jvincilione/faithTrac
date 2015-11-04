@@ -1,6 +1,7 @@
-angular.module("UserCtrl", [])
-    .controller("UserController", ["$scope", "$routeParams", "User", "Info", function($scope, $routeParams ,User, Info) {
-        "use strict";
+angular.module('UserCtrl', [])
+    .controller('UserController', ['$scope', '$routeParams', 'User', 'Info',
+    function($scope, $routeParams,User, Info) {
+        'use strict';
         $scope.users = undefined;
         $scope.role = 1;
         $scope.newUser = undefined;
@@ -44,16 +45,27 @@ angular.module("UserCtrl", [])
                     });
             } else {
                 $scope.error = {
-                    message: "asswords do not match",
-                    type: "error",
-                    identifier: "password"
+                    message: 'asswords do not match',
+                    type: 'error',
+                    identifier: 'password'
                 };
             }
         };
 
         $scope.updateUser = function() {
-            var user = $scope.curUser;
+            var user = $scope.curUser,
+                password = user.password,
+                newPassword = user.newPassword,
+                pass2 = user.password2;
+
             user._id = $scope.userId;
+
+            if (newPassword) {
+                 if (newPassword !== pass2 || !password) {
+                    $scope.errorMessage = 'Passwords do no match or current password not entered.';
+                    return;
+                 }
+            }
             User.createUser(user)
                 .success(function(response) {
                     throw (response);
@@ -65,7 +77,7 @@ angular.module("UserCtrl", [])
 
         $scope.deleteUser = function(userId) {
             if ($scope.role > 1) {
-                $scope.errorMessage = "You do not have permission to delete users.";
+                $scope.errorMessage = 'You do not have permission to delete users.';
                 // timeout to remove error message
                 // $scope.errorMessage = null;
                 return;

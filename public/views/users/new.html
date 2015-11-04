@@ -24,11 +24,17 @@
             <input type="password" class="form-control" placeholder="i'm very secure too" ng-model="newUser.password2">
         </div>
         <div class="form-group">
-            <label for="type">Role</label>
+            <label for="role">Role</label>
             <select class="form-control" ng-model="newUser.role">
                 <option value="3" selected>Teacher</option>
                 <option value="2">Admin</option>
                 <option value="1">Super Admin</option>
+            </select>
+        </div>
+        <div class="form-group" ng-show="newUser.role === 3" ng-controller="ClassController">
+            <label for="class">Class</label>
+            <select class="form-control" ng-model="newUser.class_id">
+                <option ng-repeat="class in allClasses" value="{{class._id}}">{{class.name + " | " + class.type}}</option>
             </select>
         </div>
         <button type="submit" class="btn btn-default" ng-click="addUser()">Submit</button>
